@@ -4,7 +4,7 @@ import { uploadNewImage } from "../helpers/uploadImage.helper.js";
 
 export const getCasas = async (req, res) => {
   try {
-    const casas = await Casa.find();
+    const casas = await Casa.find().populate("abuelos");
     res.status(200).json(casas);
   } catch (error) {
     return res.status(500).json({
@@ -17,7 +17,7 @@ export const getCasaById = async (req, res) => {
   try {
     const { idCasa } = req.params;
 
-    const casaFound = await Casa.findById(idCasa).populate(["abuelos"]);
+    const casaFound = await Casa.findById(idCasa).populate("abuelos");
 
     res.status(200).json(casaFound);
   } catch (error) {

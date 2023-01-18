@@ -1,5 +1,6 @@
 import Carta from "../models/carta.model.js";
 import { uploadNewImage } from "../helpers/uploadImage.helper.js";
+import Abuelo from "../models/abuelo.model.js";
 
 export const getCartas = async (req, res) => {
   try {
@@ -77,7 +78,25 @@ export const crearCarta = async (req, res) => {
     }
 
     await newCarta.save();
-    return res.status(200).json(newCarta);
+
+    if (newCarta) {
+      const addCarta = await Abuelo.findByIdAndUpdate(
+        idAbuelo,
+        {
+          $addToSet: { cartas: newCarta },
+        },
+        { new: true }
+      );
+
+      !addCarta
+        ? res.status(400).json({
+            message:
+              "No se pudo agregar la nueva carta a la lista del remitente",
+            code: 400,
+          })
+        : null;
+    }
+    res.status(200).json(newCarta);
   } catch (error) {
     console.log(error);
     return res.status(400).json({

@@ -7,6 +7,7 @@ const router = Router();
 router.get("/", adoptadorCtrl.getAdoptadores);
 router.get("/buscar/:idAdoptador", adoptadorCtrl.getAdoptadorById);
 router.post("/registrar", filesUpload(), adoptadorCtrl.crearAdoptador);
+router.post("/adoptar", adoptadorCtrl.adoptarAbuelo);
 router.delete(
   "/eliminarAdoptador/:idAdoptador",
   adoptadorCtrl.eliminarAdoptador

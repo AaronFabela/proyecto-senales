@@ -1,6 +1,7 @@
 import Adoptador from "../models/adoptador.model.js";
 import { ROLES } from "../utils/constants.js";
 import { uploadNewImage } from "../helpers/uploadImage.helper.js";
+import Abuelo from "../models/abuelo.model.js";
 
 export const getAdoptadores = async (req, res) => {
   try {
@@ -77,6 +78,50 @@ export const crearAdoptador = async (req, res) => {
     console.log(error);
     return res.status(400).json({
       message: error.message,
+    });
+  }
+};
+
+export const adoptarAbuelo = async (req, res) => {
+  try {
+    const { idAdoptador, idAbuelo } = req.body;
+
+    const abuelo = await Abuelo.findById(idAbuelo);
+
+    !abuelo
+      ? res
+          .status(400)
+          .json({ message: "No hay registro del abuelito", code: 400 })
+      : null;
+
+    const adoptador = await Adoptador.findById(idAdoptador);
+
+    !adoptador
+      ? res
+          .status(400)
+          .json({ message: "No hay registro del adoptador", code: 400 })
+      : null;
+
+    await Adoptador.findByIdAndUpdate(
+      idAdoptador,
+      {
+        $addToSet: { abuelos: abuelo },
+      },
+      { new: true }
+    );
+
+    await Abuelo.findByIdAndUpdate(
+      idAbuelo,
+      {
+        adoptado: true,
+      },
+      { new: true }
+    );
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({
+      message: error.message,
+      code: 400,
     });
   }
 };

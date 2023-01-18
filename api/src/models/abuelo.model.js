@@ -7,6 +7,10 @@ const abueloSchema = mongoose.Schema(
       unique: true,
     },
     edad: Number,
+    adoptado: {
+      type: Boolean,
+      default: false,
+    },
     imagen: {
       public_id: String,
       secure_url: String,

@@ -2,6 +2,8 @@ import Abuelo from "../models/abuelo.model.js";
 import { ROLES } from "../utils/constants.js";
 import { uploadNewImage } from "../helpers/uploadImage.helper.js";
 import Casa from "../models/casa.model.js";
+import Adoptador from "../models/adoptador.model.js";
+import Carta from "../models/carta.model.js";
 import { deleteImage } from "../utils/cloudinary.js";
 
 export const getAbuelos = async (req, res) => {
@@ -15,7 +17,7 @@ export const getAbuelos = async (req, res) => {
   }
 };
 
-export const getAbuleloById = async (req, res) => {
+export const getAbueloById = async (req, res) => {
   try {
     const { idAbuelo } = req.params;
 
@@ -32,17 +34,22 @@ export const getAbuleloById = async (req, res) => {
 
 export const eliminarAbuelo = async (req, res) => {
   try {
-    const { idAbuelo } = await req.params;
+    const { idAbuelo } = req.params;
+
     const abuelo = await Abuelo.findByIdAndDelete(idAbuelo);
     if (!abuelo) {
       return res.status(400).json({
-        message: "El abuelo no existe",
+        message: `El registro de ${abuelo.usuario}  no existe`,
       });
     }
 
     abuelo.imagen.public_id ? await deleteImage(abuelo.imagen.public_id) : null;
 
-    res.status(200).json({ abuelo, message: "Usuario eliminado", code: 200 });
+    res.status(200).json({
+      abuelo,
+      message: `Registro de ${abuelo.usuario} eliminado`,
+      code: 200,
+    });
   } catch (error) {
     console.log(error);
     return res.status(400).json({

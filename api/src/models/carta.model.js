@@ -11,6 +11,10 @@ const cartaSchema = mongoose.Schema(
       type: String,
       //unique: true,
     },
+    leida: {
+      type: Boolean,
+      default: false,
+    },
     imagen: {
       public_id: String,
       secure_url: String,

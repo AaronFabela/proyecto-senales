@@ -5,7 +5,9 @@ import { filesUpload } from "../utils/cloudinary.js";
 const router = Router();
 
 router.get("/", abueloCtrl.getAbuelos);
-router.get("/buscar/:idAbuelo", abueloCtrl.getAbuleloById);
+router.get("/buscar/:idAbuelo", abueloCtrl.getAbueloById);
+router.get("/buscarPorCasa/:idCasa", abueloCtrl.getAbueloById);
+router.get("/buscarPorAdoptador/:idAdoptador", abueloCtrl.getAbueloById);
 router.post("/registrar", filesUpload(), abueloCtrl.crearAbuelo);
 router.delete("/eliminarRegistro/:idAbuelo", abueloCtrl.eliminarAbuelo);
 
