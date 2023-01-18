@@ -22,15 +22,15 @@ export const login = async (req, res) => {
     let userLogin
 
     if (userFound) {
-      userLogin = { login: true, userFound }
+      userLogin = { login: true, userLogin: userFound }
     }
 
     if (casaFound) {
-      userLogin = { login: true, casaFound }
+      userLogin = { login: true, userLogin: casaFound }
     }
 
     if (adoptadorFound) {
-      userLogin = { login: true, adoptadorFound }
+      userLogin = { login: true, userLogin: adoptadorFound }
     }
 
     return res.status(200).json(userLogin)
