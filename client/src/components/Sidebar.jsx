@@ -52,7 +52,7 @@ const Sidebar = () => {
             <></>
           )}
           {/* Seccion Para Asilos */}
-          {userLogin.rol === ROLES.USUARIO || userLogin.rol === ROLES.CASA ? (
+          {userLogin.rol === ROLES.CASA ? (
             <>
               <p className='tittle'>Menu Casas</p>
               <SidebarElement
@@ -75,8 +75,7 @@ const Sidebar = () => {
             <></>
           )}
           {/* Seccion Para Usuarios */}
-          {userLogin.rol === ROLES.USUARIO ||
-          userLogin.rol === ROLES.ADOPTADOR ? (
+          {userLogin.rol === ROLES.ADOPTADOR ? (
             <>
               <p className='tittle'>Menú Adoptador</p>
               <SidebarElement
