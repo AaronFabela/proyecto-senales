@@ -1,0 +1,100 @@
+.sidebar {
+ position: sticky;
+ top: 0;
+ flex: 1;
+ border-right: 0.5px solid #E6E6E6;
+ height: 100%;
+ min-height: 100vh;
+ background-color: white;
+ z-index: 1;
+ width: 500px;
+ /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+}
+
+
+/*Top sidebar*/
+.sidebar .top {
+ height: 50px;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+}
+
+.sidebar .logo {
+ font-size: 20px;
+ font-weight: bold;
+ color: #0038FF;
+}
+
+.sidebar hr {
+ height: 0;
+ width: 90%;
+ border: 0.5px solid rgba(211, 211, 211, 0.286);
+}
+
+/*Center Sidebar*/
+
+.center {
+ padding-left: 10px;
+ padding-right: 10px;
+}
+
+.center ul {
+ list-style: none;
+ margin: 0;
+ padding: 0;
+}
+
+ul .tittle {
+ font-size: 10px;
+ font-weight: bold;
+ color: #9E9E9E;
+ margin-top: 15px;
+}
+
+ul.links li {
+ display: flex;
+ align-items: center;
+ padding: 5px;
+ cursor: pointer;
+ border-radius: 5px;
+ margin-bottom: 5px;
+}
+
+ul.links li:hover {
+ background-color: #0038FF;
+}
+
+ul.links .icon {
+ font-size: 18px;
+ color: #9E9E9E;
+}
+
+ul.links span {
+ font-size: 13px;
+ font-weight: 600;
+ color: #9E9E9E;
+ margin-left: 10px;
+}
+
+ul.links li:hover span {
+ color: white;
+}
+
+ul.links li:hover .icon {
+ color: white;
+}
+
+/* Activo */
+
+ul.links li.active {
+ background-color: #0038FF;
+}
+
+ul.links li.active span {
+ color: white;
+}
+
+ul.links li.active .icon {
+ color: white;
+}

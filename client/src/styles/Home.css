@@ -1,0 +1,33 @@
+.home {
+ display: flex;
+}
+
+.home-container {
+ display: block;
+ flex: 6;
+ background: #f8f9fc;
+ min-height: 100%;
+}
+
+.contenido {
+ padding: 2rem;
+ height: 100%;
+}
+
+.form-usuario{
+ padding-top: 2rem;
+ padding-inline: 10rem;
+}
+
+button.homebtn{
+ background-color: white;
+}
+
+button.homebtn:hover {
+ background-color: rgb(226, 226, 226);
+ color: black;
+}
+
+.card{
+ box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
