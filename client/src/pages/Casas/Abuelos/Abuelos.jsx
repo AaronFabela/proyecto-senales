@@ -7,6 +7,9 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import casasService from '../../../services/casas.service'
 import './styles/Abuelos.css'
+import {Link} from 'react-router-dom'
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import { Tooltip } from '@mui/material'
 
 const Abuelos = () => {
   const { auth } = useContext(AuthContext)
@@ -29,7 +32,20 @@ const Abuelos = () => {
       <div className='row'>
         <div className='linea'>
           <h1>Nuestros Abuelos 🏘️</h1>
-          <button className='botonAdd'>Agregar Abuelo</button>
+          <Tooltip title='Nuevo Registro'>
+						<Link
+							to={`/abuelos/registrarAbuelo/${userLogin._id}`}
+							style={{ textDecoration: 'none' }}
+						>
+							<button
+								className='botonAdd'
+								style={{ fontSize: '15px', padding: '5px', width: '200px'}}
+							>
+								<AddCircleIcon className='icon' fontSize='30px' />
+                Nuevo Registro
+							</button>
+						</Link>
+					</Tooltip>
         </div>
 
         <ListaCard>
