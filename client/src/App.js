@@ -6,8 +6,7 @@ import Sidebar from './components/Sidebar'
 import Casas from './pages/Administrador/Casas/Casas'
 import Usuarios from './pages/Administrador/Usuarios/Usuarios'
 import Abuelos from './pages/Casas/Abuelos/Abuelos'
-import Cartas from './pages/Casas/Cartas/Cartas'
-import Visitas from './pages/Casas/Visitas/Visitas'
+import Cartas from './pages/Usuarios/Cartas/Cartas'
 import AbuelosDisponibles from './pages/Usuarios/AbuelosDisponibles/AbuelosDisponibles'
 import MisAbuelos from './pages/Usuarios/MisAbuelos/MisAbuelos'
 import CasasPerfil from './pages/Administrador/Casas/CasasPerfil/CasasPerfil'
@@ -35,7 +34,7 @@ function App() {
               <Route path='/abuelos/:id' element={<AbuelosPerfil />} />
 
               <Route path='/cartas' element={<Cartas />} />
-              <Route path='/visitas' element={<Visitas />} />
+              {/* <Route path='/visitas' element={<Visitas />} /> */}
               {/* Rutas Usuarios */}
               <Route
                 path='abuelosDisponibles'

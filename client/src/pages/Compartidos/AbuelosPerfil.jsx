@@ -2,8 +2,13 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import Loading from '../../components/Loading'
 import abuelosService from '../../services/abuelo.service'
+import { useContext } from 'react'
+import { AuthContext } from '../../context/AuthProvider'
+import { ROLES } from '../../utils/Constants'
 
 const AbuelosPerfil = () => {
+  const { auth } = useContext(AuthContext)
+  const { userLogin } = auth
   const { id } = useParams()
   const [abuelo, setAbuelo] = useState()
   const [isLoading, setIsLoading] = useState(true)
@@ -69,6 +74,47 @@ const AbuelosPerfil = () => {
                         <div class='col-sm-9'>
                           <p class='text-muted mb-0'>{abuelo.descripcion}</p>
                         </div>
+                      </div>
+                      <hr />
+                      <div class='row'>
+                        {(() => {
+                          switch (userLogin.rol) {
+                            case ROLES.ADOPTADOR:
+                              return (
+                                <>
+                                  {abuelo.adoptado ? (
+                                    <button
+                                      disabled={true}
+                                      className='botonDop'
+                                    >
+                                      Adoptado
+                                    </button>
+                                  ) : (
+                                    <button className='botonAdd'>
+                                      Adoptar Abuelo
+                                    </button>
+                                  )}
+                                </>
+                              )
+                            case ROLES.CASA:
+                              return (
+                                <>
+                                  <div class='col-sm-3'>
+                                    <p class='mb-0'>Estatus: </p>
+                                  </div>
+                                  <div class='col-sm-9'>
+                                    <p class='text-muted mb-0'>
+                                      {abuelo.adoptado
+                                        ? 'Adoptado'
+                                        : 'Sin Adoptar'}
+                                    </p>
+                                  </div>
+                                </>
+                              )
+                            default:
+                              return null
+                          }
+                        })()}
                       </div>
                       <hr />
                     </div>

@@ -81,8 +81,8 @@ const Sidebar = () => {
               <p className='tittle'>Menú Adoptador</p>
               <SidebarElement
                 icono={<DashboardIcon className='icon' />}
-                ruta='abuelosDisponibles'
-                titulo='Abuelos'
+                ruta='casas'
+                titulo='Casas'
               />
               <SidebarElement
                 icono={<DashboardIcon className='icon' />}
