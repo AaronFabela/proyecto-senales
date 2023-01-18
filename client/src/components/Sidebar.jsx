@@ -7,9 +7,11 @@ import { useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from '../context/AuthProvider'
 import SidebarElement from './SidebarElement'
+import { ROLES } from '../utils/Constants'
 
 const Sidebar = () => {
   const { auth } = useContext(AuthContext)
+  const { userLogin } = auth
 
   const navigate = useNavigate()
   const handleCerrarSesion = () => {
@@ -26,64 +28,71 @@ const Sidebar = () => {
       <div className='center'>
         <ul className='links'>
           {/* Seccion Para Administrador */}
-          <p className='tittle'>MAIN</p>
-          <SidebarElement
-            icono={<DashboardIcon className='icon' />}
-            ruta='dashboard'
-            titulo='Dashboard'
-            active={'active'}
-          />
-          <SidebarElement
-            icono={<DashboardIcon className='icon' />}
-            ruta='casas'
-            titulo='Casas'
-          />
-          <SidebarElement
-            icono={<DashboardIcon className='icon' />}
-            ruta='usuarios'
-            titulo='Usuarios'
-          />
+          {userLogin.rol === ROLES.USUARIO ? (
+            <>
+              <p className='tittle'>MAIN</p>
+              <SidebarElement
+                icono={<DashboardIcon className='icon' />}
+                ruta='dashboard'
+                titulo='Dashboard'
+                active={'active'}
+              />
+              <SidebarElement
+                icono={<DashboardIcon className='icon' />}
+                ruta='casas'
+                titulo='Casas'
+              />
+              <SidebarElement
+                icono={<DashboardIcon className='icon' />}
+                ruta='usuarios'
+                titulo='Usuarios'
+              />
+            </>
+          ) : (
+            <></>
+          )}
           {/* Seccion Para Asilos */}
-          {/* {userRol === ROLES.Alumnos || userRol === ROLES.Admin ? ( */}
-          <>
-            <p className='tittle'>Menu Casas</p>
-            <SidebarElement
-              icono={<DashboardIcon className='icon' />}
-              ruta='abuelos'
-              titulo='Abuelos'
-            />
-            <SidebarElement
-              icono={<DashboardIcon className='icon' />}
-              ruta='cartas'
-              titulo='Cartas'
-            />
-            <SidebarElement
-              icono={<DashboardIcon className='icon' />}
-              ruta='visitas'
-              titulo='Visitas'
-            />
-          </>
-          {/* ) : (
+          {userLogin.rol === ROLES.USUARIO || userLogin.rol === ROLES.CASA ? (
+            <>
+              <p className='tittle'>Menu Casas</p>
+              <SidebarElement
+                icono={<DashboardIcon className='icon' />}
+                ruta='abuelos'
+                titulo='Abuelos'
+              />
+              <SidebarElement
+                icono={<DashboardIcon className='icon' />}
+                ruta='cartas'
+                titulo='Cartas'
+              />
+              <SidebarElement
+                icono={<DashboardIcon className='icon' />}
+                ruta='visitas'
+                titulo='Visitas'
+              />
+            </>
+          ) : (
             <></>
-          )} */}
+          )}
           {/* Seccion Para Usuarios */}
-          {/* {userRol === ROLES.Alumnos || userRol === ROLES.Admin ? ( */}
-          <>
-            <p className='tittle'>Menú Usuario</p>
-            <SidebarElement
-              icono={<DashboardIcon className='icon' />}
-              ruta='abuelosDisponibles'
-              titulo='Abuelos'
-            />
-            <SidebarElement
-              icono={<DashboardIcon className='icon' />}
-              ruta='misAbuelos'
-              titulo='Mis Abuelos'
-            />
-          </>
-          {/* ) : (
+          {userLogin.rol === ROLES.USUARIO ||
+          userLogin.rol === ROLES.ADOPTADOR ? (
+            <>
+              <p className='tittle'>Menú Adoptador</p>
+              <SidebarElement
+                icono={<DashboardIcon className='icon' />}
+                ruta='abuelosDisponibles'
+                titulo='Abuelos'
+              />
+              <SidebarElement
+                icono={<DashboardIcon className='icon' />}
+                ruta='misAbuelos'
+                titulo='Mis Abuelos'
+              />
+            </>
+          ) : (
             <></>
-          )} */}
+          )}
         </ul>
       </div>
       <div className='bottom'>

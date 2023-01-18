@@ -10,6 +10,9 @@ import Cartas from './pages/Casas/Cartas/Cartas'
 import Visitas from './pages/Casas/Visitas/Visitas'
 import AbuelosDisponibles from './pages/Usuarios/AbuelosDisponibles/AbuelosDisponibles'
 import MisAbuelos from './pages/Usuarios/MisAbuelos/MisAbuelos'
+import CasasPerfil from './pages/Administrador/Casas/CasasPerfil/CasasPerfil'
+import AbuelosPerfil from './pages/Compartidos/AbuelosPerfil'
+import UsuariosPerfil from './pages/Administrador/Usuarios/UsuariosPerfil/UsuariosPerfil'
 
 function App() {
   return (
@@ -22,9 +25,15 @@ function App() {
               {/* Rutas Administrador */}
               <Route path='/dashboard' element={<Dashboard />} />
               <Route path='/casas' element={<Casas />} />
+              <Route path='/casas/:id' element={<CasasPerfil />} />
+
               <Route path='/usuarios' element={<Usuarios />} />
+              <Route path='/adoptadores/:id' element={<UsuariosPerfil />} />
+
               {/* Rutas Casas */}
               <Route path='/abuelos' element={<Abuelos />} />
+              <Route path='/abuelos/:id' element={<AbuelosPerfil />} />
+
               <Route path='/cartas' element={<Cartas />} />
               <Route path='/visitas' element={<Visitas />} />
               {/* Rutas Usuarios */}

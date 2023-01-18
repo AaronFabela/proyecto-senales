@@ -21,9 +21,9 @@ const ElementTableCasas = ({ elemento, index, type }) => {
         <td>{index + 1}</td>
         <td>
           <a href='#'>
-            <Tooltip title='Ver Perfil'>
+            <Tooltip title='Ver Adaptador'>
               <Link
-                to={`/casas/${elemento._id}`}
+                to={`/adoptadores/${elemento._id}`}
                 style={{ textDecoration: 'none' }}
               >
                 {elemento.usuario}
@@ -31,12 +31,11 @@ const ElementTableCasas = ({ elemento, index, type }) => {
             </Tooltip>
           </a>
         </td>
-        <td>{elemento.telefono}</td>
         <td>{elemento.email}</td>
         <td className='acciones'>
-          <Tooltip title='Ver Casa'>
+          <Tooltip title='Ver Adaptador'>
             <Link
-              to={`/casas/${elemento._id}`}
+              to={`/adoptadores/${elemento._id}`}
               style={{ textDecoration: 'none' }}
             >
               <button

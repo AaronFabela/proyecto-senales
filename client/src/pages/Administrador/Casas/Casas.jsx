@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import casasService from '../../../services/casas.service'
 import TablaCasas from './components/TablaCasas'
 
-const headers = ['#', 'Nombre', 'Teléfono', 'Abuelos', 'Accion']
+const headers = ['#', 'Nombre', 'Teléfono', 'Email', 'Accion']
 
 const Casas = () => {
   const [casas, setCasas] = useState([])

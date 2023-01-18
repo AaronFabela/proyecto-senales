@@ -1,9 +1,9 @@
 import axios from 'axios'
 import { API_URL } from '../api'
 
-const ext = 'casa/'
+const ext = 'abuelo/'
 
-const getCasas = async () => {
+const getAbuelos = async () => {
   return axios.get(API_URL + ext, {
     headers: {
       'Access-Control-Allow-Origin': true,
@@ -11,7 +11,7 @@ const getCasas = async () => {
     },
   })
 }
-const getCasasId = async (id) => {
+const getAbueloId = async (id) => {
   return axios.get(API_URL + ext + 'buscar/' + id, {
     headers: {
       'Access-Control-Allow-Origin': true,
@@ -20,8 +20,8 @@ const getCasasId = async (id) => {
   })
 }
 
-const deleteCasasId = async (id) => {
-  return axios.delete(API_URL + ext + 'eliminarCasa/' + id, {
+const deleteAbueloId = async (id) => {
+  return axios.delete(API_URL + ext + 'eliminarRegistro/' + id, {
     headers: {
       'Access-Control-Allow-Origin': true,
       'Content-Type': 'application/json',
@@ -29,10 +29,10 @@ const deleteCasasId = async (id) => {
   })
 }
 
-const casasService = {
-  getCasas,
-  getCasasId,
-  deleteCasasId,
+const abuelosService = {
+  getAbuelos,
+  getAbueloId,
+  deleteAbueloId,
 }
 
-export default casasService
+export default abuelosService

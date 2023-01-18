@@ -1,18 +1,17 @@
 import React from 'react'
+import { useEffect } from 'react'
 import { useLocation, Navigate, Outlet, useNavigate } from 'react-router-dom'
 import useAuth from '../hooks/useAuth'
 
 const RequireAuth = ({ children }) => {
   const navigate = useNavigate()
   const { auth } = useAuth()
+
+  useEffect(() => {
+    console.log(auth)
+  }, [])
   if (auth.login) {
-    return (
-      <Navigate
-        to='/'
-        state={{ message: 'No cuentas con los permisos para acceder' }}
-        replace={true}
-      />
-    )
+    return children
   } else {
     return (
       <Navigate

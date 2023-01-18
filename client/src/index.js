@@ -17,15 +17,15 @@ root.render(
           <Route path='/' element={<Home />} />
           <Route path='/login' element={<Login />} />
 
-          {/* <Route
+          <Route
             path='/*'
             element={
               <RequireAuth>
                 <App />
               </RequireAuth>
             }
-          /> */}
-          <Route path='/*' element={<App />} />
+          />
+          {/* <Route path='/*' element={<App />} /> */}
         </Routes>
       </AuthProvider>
     </BrowserRouter>
