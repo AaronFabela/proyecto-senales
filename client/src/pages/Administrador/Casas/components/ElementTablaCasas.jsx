@@ -23,17 +23,21 @@ const ElementTableCasas = ({ elemento, index, type }) => {
         <td>
           <a href='#'>
             <img
-              src={elemento?.perfil?.secure_url}
+              alt='casa'
+              src={
+                elemento?.imagen
+                  ? elemento?.imagen
+                  : 'https://img.freepik.com/vector-premium/casa-dibujos-animados_11460-1609.jpg'
+              }
               className='avatar'
               style={{ height: '2rem' }}
-              alt='Avatar'
             />
             <Tooltip title='Ver Perfil'>
               <Link
                 to={`/${type}Perfil/${elemento._id}`}
                 style={{ textDecoration: 'none' }}
               >
-                {elemento.nombre}
+                {elemento.usuario}
               </Link>
             </Tooltip>
           </a>
