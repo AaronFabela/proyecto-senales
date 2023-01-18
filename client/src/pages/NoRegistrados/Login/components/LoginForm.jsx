@@ -35,13 +35,13 @@ const LoginForm = () => {
   const handleSubmit = async (e) => {
     // navigate('/home')
     try {
-      // const response = await AuthService.login(
-      //   credentials.user,
-      //   credentials.password
-      // )
+      const response = await AuthService.login(
+        credentials.user,
+        credentials.password
+      )
       // const { id, usuario, login, rol } = response
-      // //const rol = response?.user?.rol
-      // setAuth({ login, id, usuario, rol })
+      //const rol = response?.user?.rol
+      setAuth(response)
       navigate('/dashboard')
     } catch (err) {
       err.response.data.errors.map((error) =>

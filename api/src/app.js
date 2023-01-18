@@ -6,6 +6,7 @@ import usuarioRoutes from './routes/usuario.routes.js'
 import abueloRoutes from './routes/abuelo.routes.js'
 import casaRoutes from './routes/casa.routes.js'
 import adoptadorRoutes from './routes/adoptador.routes.js'
+import authRoutes from './routes/auth.routes.js'
 
 const app = express()
 
@@ -26,6 +27,7 @@ app.use(
   })
 )
 
+app.use('/api/auth', authRoutes)
 app.use('/api/usuario', usuarioRoutes)
 app.use('/api/abuelo', abueloRoutes)
 app.use('/api/casa', casaRoutes)
