@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
 const abueloSchema = mongoose.Schema(
   {
@@ -6,15 +6,17 @@ const abueloSchema = mongoose.Schema(
       type: String,
       unique: true,
     },
+    edad: Number,
     imagen: {
-      type: String,
+      public_id: String,
+      secure_url: String,
     },
     descripcion: {
       type: String,
     },
     cartas: [
       {
-        ref: 'Carta',
+        ref: "Carta",
         type: mongoose.Schema.Types.ObjectId,
       },
     ],
@@ -23,6 +25,6 @@ const abueloSchema = mongoose.Schema(
     timestamps: true,
     versionKey: false,
   }
-)
+);
 
-export default mongoose.model('Abuelo', abueloSchema)
+export default mongoose.model("Abuelo", abueloSchema);
