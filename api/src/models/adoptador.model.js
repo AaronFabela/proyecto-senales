@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
 const adoptadorSchema = mongoose.Schema(
   {
@@ -10,13 +10,17 @@ const adoptadorSchema = mongoose.Schema(
       type: String,
       //unique: true,
     },
+    imagen: {
+      public_id: String,
+      secure_url: String,
+    },
     password: {
       type: String,
       required: true,
     },
     abuelos: [
       {
-        ref: 'Abuelo',
+        ref: "Abuelo",
         type: mongoose.Schema.Types.ObjectId,
       },
     ],
@@ -26,6 +30,6 @@ const adoptadorSchema = mongoose.Schema(
     timestamps: true,
     versionKey: false,
   }
-)
+);
 
-export default mongoose.model('Adoptador', adoptadorSchema)
+export default mongoose.model("Adoptador", adoptadorSchema);

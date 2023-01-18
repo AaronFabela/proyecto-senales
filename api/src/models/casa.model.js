@@ -1,4 +1,4 @@
-import mongoose from 'mongoose'
+import mongoose from "mongoose";
 
 const casaSchema = mongoose.Schema(
   {
@@ -19,7 +19,7 @@ const casaSchema = mongoose.Schema(
     },
     abuelos: [
       {
-        ref: 'Abuelo',
+        ref: "Abuelo",
         type: mongoose.Schema.Types.ObjectId,
       },
     ],
@@ -27,7 +27,8 @@ const casaSchema = mongoose.Schema(
       type: String,
     },
     imagen: {
-      type: String,
+      public_id: String,
+      secure_url: String,
     },
     rol: { type: String },
   },
@@ -35,6 +36,6 @@ const casaSchema = mongoose.Schema(
     timestamps: true,
     versionKey: false,
   }
-)
+);
 
-export default mongoose.model('Casa', casaSchema)
+export default mongoose.model("Casa", casaSchema);
