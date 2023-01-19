@@ -58,6 +58,34 @@ export const eliminarAbuelo = async (req, res) => {
   }
 };
 
+export const leerCarta = async (req, res) => {
+  try {
+    const { idCarta } = req.params;
+
+    const carta = await Carta.findByIdAndUpdate(
+      idCarta,
+      {
+        leida: true,
+      },
+      { new: true }
+    );
+
+    !carta
+      ? res.status(400).json({
+          message: "No se ha encontrado registro de la carta",
+          code: 400,
+        })
+      : null;
+
+    res.status(200).json({ carta, message: "Carta leída", code: 200 });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({
+      message: error.message,
+    });
+  }
+};
+
 export const crearAbuelo = async (req, res) => {
   try {
     const { idCasa, usuario, edad, descripcion } = req.body;
