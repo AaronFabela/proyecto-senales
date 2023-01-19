@@ -9,6 +9,8 @@ import AddHomeWorkIcon from '@mui/icons-material/AddHomeWork'
 import adoptadoresService from '../../services/adoptadores.service'
 import SendIcon from '@mui/icons-material/Send'
 import { useNavigate } from 'react-router-dom'
+import ListaCard from '../../components/ListaCard'
+import CartaAbuelo from './CartaAbuelo'
 
 const AbuelosPerfil = () => {
   const { auth } = useContext(AuthContext)
@@ -160,13 +162,13 @@ const AbuelosPerfil = () => {
                 </div>
               </div>
 
-              {/* <ListaCard>
-                {casa.abuelos.length > 0 ? (
-                  casa.abuelos.map((abuelo) => <Card abuelo={abuelo} />)
+              <ListaCard>
+                {abuelo?.cartas?.length > 0 ? (
+                  abuelo?.cartas?.map((carta) => <CartaAbuelo id={carta._id} />)
                 ) : (
                   <></>
                 )}
-              </ListaCard> */}
+              </ListaCard>
             </div>
           </section>
         </>

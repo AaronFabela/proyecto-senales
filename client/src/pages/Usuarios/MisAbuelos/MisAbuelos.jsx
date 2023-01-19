@@ -4,11 +4,16 @@ import Card from '../../../components/Card'
 import { useContext } from 'react'
 import { AuthContext } from '../../../context/AuthProvider'
 import { useState } from 'react'
+import { useEffect } from 'react'
 
 const MisAbuelos = () => {
   const { auth } = useContext(AuthContext)
   const { userLogin } = auth
-  const [abuelos, setAbuelos] = useState(userLogin.abuelos)
+  const [abuelos, setAbuelos] = useState([])
+
+  useEffect(() => {
+    setAbuelos(userLogin.abuelos)
+  }, [userLogin.abuelos])
 
   return (
     <>
