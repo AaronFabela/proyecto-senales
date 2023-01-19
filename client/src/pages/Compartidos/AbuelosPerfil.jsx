@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react'
-import { useParams,Link } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import Loading from '../../components/Loading'
 import abuelosService from '../../services/abuelo.service'
 import { useContext } from 'react'
 import { AuthContext } from '../../context/AuthProvider'
 import { ROLES } from '../../utils/Constants'
-import AddHomeWorkIcon from '@mui/icons-material/AddHomeWork';
+import AddHomeWorkIcon from '@mui/icons-material/AddHomeWork'
 import adoptadoresService from '../../services/adoptadores.service'
-import SendIcon from '@mui/icons-material/Send';
+import SendIcon from '@mui/icons-material/Send'
+import { useNavigate } from 'react-router-dom'
 
 const AbuelosPerfil = () => {
   const { auth } = useContext(AuthContext)
@@ -15,6 +16,7 @@ const AbuelosPerfil = () => {
   const { id } = useParams()
   const [abuelo, setAbuelo] = useState()
   const [isLoading, setIsLoading] = useState(true)
+  const navigate = useNavigate()
 
   useEffect(() => {
     abuelosService.getAbueloId(id).then(
@@ -40,9 +42,7 @@ const AbuelosPerfil = () => {
     } catch (error) {
       console.log(error)
     }
-
   }
-
 
   return (
     <>
@@ -51,31 +51,22 @@ const AbuelosPerfil = () => {
       ) : (
         <>
           <section style={{ backgroundColor: '#eee' }}>
-            {userLogin.rol === 'adoptador'? (
-              <div style={{padding:'15px'}}>
-                <button
-                  className='btn btn-primary'
-                  style={{ fontSize: '15px', padding: '5px', width: '200px'}}
-                  onClick={(e) => handleAdopt(e)}
-                >
-                  <AddHomeWorkIcon className='icon' fontSize='30px' />
-                  Adoptar
-                </button>    
+            {userLogin.rol === 'adoptador' ? (
+              <div style={{ padding: '15px' }}>
                 <Link
-							to={`/enviarCarta/${abuelo._id}`}
-							style={{ textDecoration: 'none' }}
-						>
-							<button
-								className='btn btn-warning'
-								style={{ fontSize: '15px', padding: '5px', width: '200px'}}
-							>
-								<SendIcon className='icon' fontSize='30px' />
-                Enviar carta
-							</button>
-						</Link>
+                  to={`/enviarCarta/${abuelo._id}`}
+                  style={{ textDecoration: 'none' }}
+                >
+                  <button
+                    className='btn btn-warning'
+                    style={{ fontSize: '15px', padding: '5px', width: '200px' }}
+                  >
+                    <SendIcon className='icon' fontSize='30px' />
+                    Enviar carta
+                  </button>
+                </Link>
               </div>
-              
-            ):null}
+            ) : null}
             <div class='container py-5'>
               <div class='row'>
                 <div class='col-lg-4'>
@@ -134,7 +125,10 @@ const AbuelosPerfil = () => {
                                       Adoptado
                                     </button>
                                   ) : (
-                                    <button className='botonAdd'>
+                                    <button
+                                      className='botonAdd'
+                                      onClick={() => handleAdopt()}
+                                    >
                                       Adoptar Abuelo
                                     </button>
                                   )}
