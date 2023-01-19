@@ -19,6 +19,12 @@ export const getCartaById = async (req, res) => {
 
     const carta = await Carta.findById(idCarta);
 
+    !carta
+      ? res
+          .status(400)
+          .json({ message: "No hay registro de la carta", code: 400 })
+      : null;
+
     res.status(200).json(carta);
   } catch (error) {
     console.log(error);
