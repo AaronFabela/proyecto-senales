@@ -60,16 +60,6 @@ const Sidebar = () => {
                 ruta='abuelos'
                 titulo='Abuelos'
               />
-              <SidebarElement
-                icono={<DashboardIcon className='icon' />}
-                ruta='cartas'
-                titulo='Cartas'
-              />
-              <SidebarElement
-                icono={<DashboardIcon className='icon' />}
-                ruta='visitas'
-                titulo='Visitas'
-              />
             </>
           ) : (
             <></>

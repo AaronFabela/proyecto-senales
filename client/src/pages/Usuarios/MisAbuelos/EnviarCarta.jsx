@@ -25,7 +25,7 @@ const EnviarCarta = () => {
   const handleSubmit = async (e) => {
     try {
       data.append('titulo', carta.titulo)
-      data.append('contenido', carta.edad)
+      data.append('contenido', carta.contenido)
       data.append('imagen', imagen.imagen)
       data.append('idAbuelo', id)
 

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import Person2Icon from '@mui/icons-material/Person2'
 import cartasService from '../../services/carta.controller'
 import { useEffect } from 'react'
+import abuelosService from '../../services/abuelo.service'
 // import adoptadoresService from '../../../services/adoptadores.service'
 
 const Carta = () => {
@@ -22,6 +23,18 @@ const Carta = () => {
     )
   }, [id])
 
+  const handleLeida = () => {
+    abuelosService.leerCarta(id).then(
+      (response) => {
+        console.log(response.data)
+        navigate('/misAbuelos')
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  }
+
   return (
     <>
       <div className='card text-center'>
@@ -37,7 +50,7 @@ const Carta = () => {
                 id='titulo'
                 name='titulo'
                 className='form-control'
-                value={carta?.usuario}
+                value={carta?.titulo}
                 disabled
               />
             </div>
@@ -51,7 +64,7 @@ const Carta = () => {
                 cols='50'
                 rows='10'
                 placeholder='Redacta una breve descripción de la persona'
-                value={carta?.descripcion}
+                value={carta?.contenido}
                 required
                 disabled
               ></textarea>
@@ -59,17 +72,29 @@ const Carta = () => {
               <label htmlFor='imagen' className='form-label'>
                 <b>Adjunta una imagen</b>
               </label>
+              <img
+                src={carta?.imagen?.secure_url}
+                alt='imagen'
+                style={{ height: '500px' }}
+              />
             </div>
           </div>
           <div class='d-grid gap-2 d-md-block'>
-            <button
-              className='btn btn-primary'
-              type='button'
-              // onClick={(e) => handleSubmit(e)}
-            >
-              Enviar Carta
-              <Person2Icon className='icon' />
-            </button>
+            {carta?.leida ? (
+              <button className='btn btn-primary' type='button' disabled>
+                Leida
+                <Person2Icon className='icon' />
+              </button>
+            ) : (
+              <button
+                className='btn btn-primary'
+                type='button'
+                onClick={() => handleLeida()}
+              >
+                Leida
+                <Person2Icon className='icon' />
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -29,10 +29,20 @@ const deleteAbueloId = async (id) => {
   })
 }
 
+const leerCarta = async (id) => {
+  return axios.put(API_URL + ext + 'leerCarta/' + id, {
+    headers: {
+      'Access-Control-Allow-Origin': true,
+      'Content-Type': 'application/json',
+    },
+  })
+}
+
 const abuelosService = {
   getAbuelos,
   getAbueloId,
   deleteAbueloId,
+  leerCarta,
 }
 
 export default abuelosService
